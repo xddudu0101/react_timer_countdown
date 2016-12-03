@@ -14,7 +14,7 @@ const Navbar = () => {
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <Link to="/" className="navbar-brand" style={{color: "#ffffff"}}>计时器</Link>
+                        <Link to="/" className="navbar-brand" style={{color: "#ffffff"}}>可能不是苹果</Link>
                     </div>
                     <div id="navbar" className="collapse navbar-collapse">
                         <ul className="nav navbar-nav">

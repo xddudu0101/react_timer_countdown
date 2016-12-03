@@ -1,45 +1,31 @@
-import React, {Component, PropTypes} from 'react';
+import React from 'react';
 
-class Clock extends Component {
-    static defaultProps = {
-        totalSeconds: 0
+const formatSeconds = function(count=0) {
+    let seconds = count % 60;
+    let minutes = Math.floor(count / 60);
+
+    if (seconds < 10) {
+        seconds = '0' + seconds;
     }
 
-    static propTypes = {
-        totalSeconds: PropTypes.number.isRequired
+    if (minutes < 10) {
+        minutes = '0' + minutes;
     }
 
-    formatSeconds(totalSeconds) {
-        let seconds = totalSeconds % 60;
-        let minutes = Math.floor(totalSeconds / 60);
-
-        if (seconds < 10) {
-            seconds = '0' + seconds;
-        }
-
-        if (minutes < 10) {
-            minutes = '0' + minutes;
-        }
-
-        return `${minutes}:${seconds}`;
-    }
-
-    render() {
-        const { totalSeconds } = this.props;
-        return (
-            <div className="row">
-                <div className="col-md-4 col-md-offset-4">
-                    <div className="clock">
-                        <span className="clock-text" ref={span => this.clockText = span} >
-                        {
-                            this.formatSeconds(totalSeconds)
-                        }
-                        </span> 
-                    </div>
-                </div>
-            </div>
-        );
-    }
+    return `${minutes}:${seconds}`;
 }
+
+const Clock = ({count}) => {
+    let clockText = null;
+    return (
+        <div className="clock">
+            <span className="clock-text" ref={span => clockText = span}>
+            {
+                formatSeconds(count)
+            }
+            </span> 
+        </div>
+    );
+};
 
 export default Clock;
